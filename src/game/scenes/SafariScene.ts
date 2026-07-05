@@ -1,6 +1,9 @@
 import Phaser from "phaser";
+import { Player } from "../objects/Player";
 
 export class SafariScene extends Phaser.Scene {
+
+    private player!: Player;
 
     constructor() {
         super("SafariScene");
@@ -8,34 +11,49 @@ export class SafariScene extends Phaser.Scene {
 
     preload() {
 
-        // Assets will go here later.
+        // Temporary player placeholder
+        this.load.image(
+            "player",
+            "https://labs.phaser.io/assets/sprites/phaser-dude.png"
+        );
+
     }
 
     create() {
 
-        this.add.text(
-            40,
-            40,
-            "Verdant Safari",
-            {
-                color: "#ffffff",
-                fontSize: "32px"
-            }
+        this.physics.world.setBounds(
+            0,
+            0,
+            2500,
+            2500
         );
 
-        this.add.text(
-            40,
-            90,
-            "Prototype Build",
-            {
-                color: "#99aaff",
-                fontSize: "18px"
-            }
+        this.cameras.main.setBounds(
+            0,
+            0,
+            2500,
+            2500
         );
+
+        this.player = new Player(
+            this,
+            400,
+            400
+        );
+
+        this.cameras.main.startFollow(this.player);
+
+        this.add.text(
+            20,
+            20,
+            "Verdant Forest Prototype"
+        ).setScrollFactor(0);
 
     }
 
     update() {
+
+        this.player.update();
 
     }
 
