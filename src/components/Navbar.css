@@ -1,0 +1,101 @@
+.navbar{
+
+    height:80px;
+
+    background:#1b1730;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 40px;
+
+    border-bottom:2px solid #332d57;
+
+}
+
+.logo{
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    color:white;
+
+}
+
+.nav-links{
+
+    display:flex;
+
+    gap:18px;
+
+}
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:#cccccc;
+
+    font-weight:600;
+
+    transition:.2s;
+
+    padding:10px 14px;
+
+    border-radius:10px;
+
+}
+
+.nav-links a:hover{
+
+    background:#2d2752;
+
+    color:white;
+
+}
+
+.active{
+
+    background:#7c5cff;
+
+    color:white !important;
+
+}
+
+.player-bar{
+
+    display:flex;
+
+    gap:14px;
+
+    align-items:center;
+
+}
+
+.currency{
+
+    background:#2d2752;
+
+    color:white;
+
+    padding:10px 16px;
+
+    border-radius:12px;
+
+}
+
+.level{
+
+    background:#7c5cff;
+
+    color:white;
+
+    padding:10px 16px;
+
+    border-radius:12px;
+
+}
