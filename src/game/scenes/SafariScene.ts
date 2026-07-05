@@ -1,7 +1,9 @@
+import { Creature } from "../objects/Creature";
 import Phaser from "phaser";
 import { Player } from "../objects/Player";
 
 export class SafariScene extends Phaser.Scene {
+    private creatures: Creature[] = [];
 
     private player!: Player;
 
@@ -19,6 +21,25 @@ export class SafariScene extends Phaser.Scene {
     }
 
     create() {
+        for (let i = 0; i < 12; i++) {
+
+    const creature = new Creature(
+
+        this,
+
+        Phaser.Math.Between(200, 2800),
+
+        Phaser.Math.Between(200, 2800),
+
+        "leafling",
+
+        "Leafling"
+
+    );
+
+    this.creatures.push(creature);
+
+}
 
         //---------------------------------
         // WORLD
@@ -108,10 +129,13 @@ export class SafariScene extends Phaser.Scene {
 
 );
 
-    update(){
-
+    update(time: number){
         this.player.update();
 
-    }
+this.creatures.forEach(creature => {
+
+    creature.update(time);
+
+});
 
 }
