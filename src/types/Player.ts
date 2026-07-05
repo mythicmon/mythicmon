@@ -39,3 +39,50 @@ export interface Player {
     safariProgress: SafariProgress[];
 
 }
+export interface CardEntry{
+
+    creatureId:string;
+
+    amount:number;
+
+    shiny:boolean;
+
+}
+
+export interface CreatureEntry{
+
+    creatureId:string;
+
+    caught:number;
+
+    highestLevel:number;
+
+    shinyCaught:boolean;
+
+    photoTaken:boolean;
+
+}
+
+export interface PackProgress{
+
+    packId:string;
+
+    level:number;
+
+    xp:number;
+
+    packsOpened:number;
+
+}
+
+export interface SafariProgress{
+
+    safariId:string;
+
+    level:number;
+
+    xp:number;
+
+    runsCompleted:number;
+
+}
