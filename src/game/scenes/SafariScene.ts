@@ -11,47 +11,91 @@ export class SafariScene extends Phaser.Scene {
 
     preload() {
 
-        // Temporary player placeholder
-        this.load.image(
-            "player",
-            "https://labs.phaser.io/assets/sprites/phaser-dude.png"
-        );
+        // Temporary placeholder graphics
+        this.load.image("grass", "assets/tiles/grass.png");
+        this.load.image("tree", "assets/tiles/tree.png");
+        this.load.image("player", "assets/player/player.png");
 
     }
 
     create() {
 
-        this.physics.world.setBounds(
-            0,
-            0,
-            2500,
-            2500
-        );
+        //---------------------------------
+        // WORLD
+        //---------------------------------
 
-        this.cameras.main.setBounds(
-            0,
-            0,
-            2500,
-            2500
-        );
+        this.physics.world.setBounds(0,0,3000,3000);
 
-        this.player = new Player(
+        this.cameras.main.setBounds(0,0,3000,3000);
+
+        //---------------------------------
+        // GRASS
+        //---------------------------------
+
+        for(let x=0;x<60;x++){
+
+            for(let y=0;y<60;y++){
+
+                this.add.image(
+                    x*50,
+                    y*50,
+                    "grass"
+                ).setOrigin(0);
+
+            }
+
+        }
+
+        //---------------------------------
+        // TREES
+        //---------------------------------
+
+        const trees=this.physics.add.staticGroup();
+
+        const positions=[
+
+            [250,300],
+            [500,600],
+            [1200,900],
+            [1450,1700],
+            [1800,1200],
+            [2300,500],
+            [2600,2100]
+
+        ];
+
+        positions.forEach(([x,y])=>{
+
+            trees.create(x,y,"tree");
+
+        });
+
+        //---------------------------------
+        // PLAYER
+        //---------------------------------
+
+        this.player=new Player(
             this,
-            400,
-            400
+            500,
+            500
         );
+
+        this.physics.add.collider(
+            this.player,
+            trees
+        );
+
+        //---------------------------------
+        // CAMERA
+        //---------------------------------
 
         this.cameras.main.startFollow(this.player);
 
-        this.add.text(
-            20,
-            20,
-            "Verdant Forest Prototype"
-        ).setScrollFactor(0);
+        this.cameras.main.setZoom(1.3);
 
     }
 
-    update() {
+    update(){
 
         this.player.update();
 
