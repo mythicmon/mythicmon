@@ -94,6 +94,19 @@ export class SafariScene extends Phaser.Scene {
         this.cameras.main.setZoom(1.3);
 
     }
+    const leafling=new Creature(
+
+    this,
+
+    800,
+
+    650,
+
+    "leafling",
+
+    "Leafling"
+
+);
 
     update(){
 
